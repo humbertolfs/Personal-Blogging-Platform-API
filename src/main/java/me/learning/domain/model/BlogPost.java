@@ -1,12 +1,6 @@
 package me.learning.domain.model;
 
-import java.util.Date;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity(name = "tb_blogPost")
 public class BlogPost {
@@ -17,17 +11,13 @@ public class BlogPost {
 
     private String title;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Author author;
 
-    private Date publishDate;
-    private Date modifyDate;
+    private String publishDate;
+    private String modifyDate;
     private String content;
     private int likes;
-
-    public BlogPost() {
-
-    }
 
     public Long getId() {
         return id;
@@ -53,19 +43,19 @@ public class BlogPost {
         this.author = author;
     }
 
-    public Date getPublishDate() {
+    public String getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(String publishDate) {
         this.publishDate = publishDate;
     }
 
-    public Date getModifyDate() {
+    public String getModifyDate() {
         return modifyDate;
     }
 
-    public void setModifyDate(Date modifyDate) {
+    public void setModifyDate(String modifyDate) {
         this.modifyDate = modifyDate;
     }
 

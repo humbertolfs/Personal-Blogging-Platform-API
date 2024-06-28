@@ -15,10 +15,6 @@ public class Author {
     private String name;
     private String description;
 
-    public Author() {
-
-    }
-
     public Long getId() {
         return id;
     }

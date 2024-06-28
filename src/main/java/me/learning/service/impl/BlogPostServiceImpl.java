@@ -5,6 +5,7 @@ import me.learning.domain.repository.BlogPostRepository;
 import me.learning.service.BlogPostService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
@@ -14,6 +15,11 @@ public class BlogPostServiceImpl implements BlogPostService {
 
     public BlogPostServiceImpl(BlogPostRepository blogPostRepository){
         this.blogPostRepository = blogPostRepository;
+    }
+
+    @Override
+    public List<BlogPost> findAll(){
+        return blogPostRepository.findAll();
     }
 
     @Override
