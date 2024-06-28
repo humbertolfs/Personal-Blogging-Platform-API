@@ -38,4 +38,19 @@ public class BlogPostController {
                 .toUri();
         return ResponseEntity.created(location).body(blogPostCreated);
     }
+
+    @PutMapping
+    public ResponseEntity<BlogPost> modify(@RequestBody BlogPost blogPost){
+        var blogPostModified = blogPostService.modify(blogPost);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(blogPostModified.getId())
+                .toUri();
+        return ResponseEntity.created(location).body(blogPostModified);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
+        blogPostService.deleteById(id);
+    }
 }

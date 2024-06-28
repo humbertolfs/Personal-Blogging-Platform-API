@@ -34,4 +34,20 @@ public class BlogPostServiceImpl implements BlogPostService {
         }
         return blogPostRepository.save(blogPostToCreate);
     }
+
+    @Override
+    public BlogPost modify(BlogPost blogPostToModify){
+        if(!blogPostRepository.existsById(blogPostToModify.getId())){
+            throw new NoSuchElementException("This Post doesn't exists.");
+        }
+        return blogPostRepository.save(blogPostToModify);
+    }
+
+    @Override
+    public void deleteById(Long id){
+        if(!blogPostRepository.existsById(id)){
+            throw new NoSuchElementException("This Post doesn't exists.");
+        }
+        blogPostRepository.deleteById(id);
+    }
 }

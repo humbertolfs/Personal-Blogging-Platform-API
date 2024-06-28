@@ -11,4 +11,8 @@ public interface BlogPostService {
     BlogPost findById(Long id);
 
     BlogPost create(BlogPost postToCreate);
+
+    BlogPost modify(BlogPost postToCreate);
+
+    void deleteById(Long id);
 }
